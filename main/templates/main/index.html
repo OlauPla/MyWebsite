@@ -1,4 +1,5 @@
 {% load static %}
+{% load crispy_forms_tags %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,7 +12,6 @@
         body{
             background: linear-gradient(109.6deg, rgb(20, 30, 48) 11.2%, rgb(36, 59, 85) 91.1%);
             background-attachment: fixed;
-            color: ghostwhite;
             scroll-behavior: smooth;
             font-family: "Lexend Deca", Verdana, Arial, Helvetica, sans-serif;
         }
@@ -41,9 +41,6 @@
             color: white;
         }
 
-        a:hover{
-            color:red;
-        }
 
         .separation{
             margin-top: 8cm;
@@ -55,18 +52,22 @@
         }
 
         .navbar{
-            position: fixed;
-            background:transparent;
+
+            background:white;
             width: 100%;
             text-align: center;
-            position: fixed;
-            top: 0;
         }
+
+        .card{
+            background-color: rgb(36, 59, 85);
+            color:white;
+        }
+
 
     </style>
 </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container-fluid">
           <a class="navbar-brand text-light mx-5" href="#">Olau Pla Richart</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,8 +77,9 @@
             <div class="navbar-nav">
               <a class="nav-link active mx-3" aria-current="page" href="#home">HOME</a>
               <a class="nav-link mx-3" href="#about">ABOUT</a>
+              <a class="nav-link mx-3" href="#projects">PROJECTS</a>
               <a class="nav-link mx-3" href="#contact">CONTACT</a>
-              <a class="nav-link mx-3" href="#blog">BLOG</a>
+              
             </div>
 
             <span class="navbar-text">
@@ -98,21 +100,39 @@
         <h1 class="text-center">About me</h1>
         <p class="text-center">I am 14 year old programmer that is currently learning web development.</br>I have experience with python and JS.</p>
     </div>
+    <hr width="20%" style="margin: auto;" id="projects"></hr>
+    <div class="container separation">
+        <h1 class="text-center">My Projects</h1>
+        <div class="card mx-auto mt-5" style="width: auto;">
+            <div class="card-body">
+              <h5 class="card-title text-center">Projects will be comming soon</h5>
+              <p class="card-text text-center">No projects at the moment</p>
+            </div>
+        </div>
+        
+    </div>
     <hr width="20%" style="margin: auto;" id="contact"></hr>
     <div class="container separation">
         <h1 class="text-center">Contact</h1>
-        <p class="text-center">Contact form</p>
-    </div>
-    <hr width="20%" style="margin: auto;" id="blog"></hr>
-    <div class="container separation">
-        <h1 class="text-center">Blog</h1>
-        <p class="text-center">Blog post comming soon!</p>
+        <div class="card mt-5">
+            <div class="card-body">
+                <form method="POST">
+                    {% csrf_token %}
+                    <fieldset class="form-group mt-5">
+                        {{ form|crispy }}
+                    </fieldset>
+                    <div class="form-group">
+                        <button class="btn btn-dark" type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+          </div>
+        
     </div>
     <footer class="bg-dark text-center text-lg-start">
         <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-          © 2022 Copyright: Olau Pla Richart
-          
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); color:white">
+          © 2022 Copyright: Olau Pla Richart. All rights reserved. v=1.0
         </div>
         <!-- Copyright -->
     </footer>
