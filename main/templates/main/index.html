@@ -69,7 +69,7 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container-fluid">
-          <a class="navbar-brand text-light mx-5" href="#">Olau Pla Richart</a>
+          <a class="navbar-brand text-light mx-5" href="#home">Olau Pla Richart</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -114,7 +114,13 @@
     <hr width="20%" style="margin: auto;" id="contact"></hr>
     <div class="container separation">
         <h1 class="text-center">Contact</h1>
-        <div class="card mt-5">
+        {% for msg in messages %}
+        <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+            {{ msg }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+        <div class="card mt-3">
             <div class="card-body">
                 <form method="POST">
                     {% csrf_token %}
