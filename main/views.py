@@ -19,7 +19,7 @@ def index(request):
                 message = f.cleaned_data["message"]
                 contact = Contact(name=name,email=email,message=message)
                 contact.save()
-                return redirect('home')
+                return redirect('/#contact')
                 
                 
 
